@@ -1,5 +1,5 @@
 {
-  "name": "@crisvp/axios-vcr2",
+  "name": "axios-vcr2",
   "version": "1.0.0",
   "description": "Record and play back Axios HTTP requests for tests",
   "main": "index.js",
