@@ -1,6 +1,6 @@
 {
   "name": "axios-vcr2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Record and play back Axios HTTP requests for tests",
   "main": "index.js",
   "author": "Cris van Pelt <cris@melkfl.es>",
@@ -39,5 +39,6 @@
   "scripts": {
     "test": "jest",
     "prepublish": "tsc"
-  }
+  },
+  "exports": "./dist/index.js"
 }
