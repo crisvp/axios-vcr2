@@ -1,5 +1,4 @@
 import Debug from "debug";
-import fs from "fs";
 import { basename } from "path";
 
 interface Debuggers {
@@ -9,10 +8,8 @@ const _debug: Debuggers = {};
 
 function debugFunction(identifier: string) {
   if (typeof _debug[identifier] !== "undefined") return _debug[identifier];
-  const packageJson = fs.readFileSync("package.json", { encoding: "utf-8" });
-  const packageInfo = JSON.parse(packageJson);
 
-  _debug[identifier] = Debug(`${packageInfo.name}:${basename(identifier)}`);
+  _debug[identifier] = Debug(`axios-vcr2:${basename(identifier)}`);
   return _debug[identifier];
 }
 
