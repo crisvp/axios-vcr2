@@ -1,6 +1,6 @@
 {
   "name": "axios-vcr2",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Record and play back Axios HTTP requests for tests",
   "author": "Cris van Pelt <cris@melkfl.es>",
   "license": "MIT",
@@ -39,7 +39,6 @@
     "test": "jest",
     "prepublish": "tsc"
   },
-  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
