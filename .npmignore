@@ -1,0 +1,11 @@
+.nvmrc
+src/
+.history/
+*.json
+coverage/
+.eslintrc.json
+jest.*
+*.json
+test/
+.vscode/
+*.tgz

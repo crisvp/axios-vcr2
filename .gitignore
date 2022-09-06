@@ -1,0 +1,9 @@
+node_modules/
+.history/
+.DS_Store
+Thumbs.db
+yarn-error.log
+*.sw?
+coverage/
+dist/
+*.tgz
