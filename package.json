@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "Cris van Pelt <cris@melkfl.es>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "repository": "https://github.com/crisvp/axios-vcr2.git",
   "devDependencies": {
     "@types/debug": "^4.1.7",
