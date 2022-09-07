@@ -86,10 +86,12 @@ It is possible to use custom axios instances, use more than one cassette, and/or
     // This can be any string. It will be used as the cassette id, to match subsequent
     // requests. The matchers included with this package use md5 to hash a processed object.
     // Return 'null' not to save the request in this file.
+    //
+    // This matcher only returns IDs for URLs matching example.com
     return url.includes("example.com") ? `${method}:${url}` : null;
   }
 
-  // Returns a random id to record all other requests
+  // This matcher only returns IDs for URLs matching askjeeves.com
   function jeevesMatcher(requestConfig: AxiosRequestConfig): string {
     const { baseURL, method } = config;
     const url = config.baseURL ? new URL(url, config.baseURL).toString() : config.url;
