@@ -5,6 +5,10 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+
+[![Tests][gh-build-shield]][gh-build-url]
+[![NPM][npm-shield]][npm-url]
+
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 ## About The Project
@@ -127,12 +131,10 @@ DEBUG="axios-vcr2:*" yarn test
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-<!-- CONTACT -->
 ## Contact
 
 Cris van Pelt - cris@melkfl.es
@@ -153,3 +155,7 @@ Project Link: [https://github.com/crisvp/axios-vcr2](https://github.com/crisvp/a
 [license-url]: https://github.com/crisvp/axios-vcr2/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/crisvanpelt
+[npm-shield]: https://img.shields.io/npm/dw/axios-vcr2
+[npm-url]: https://www.npmjs.com/package/axios-vcr2
+[gh-build-shield]: https://img.shields.io/github/checks-status/crisvp/axios-vcr2/main
+[gh-build-url]: https://github.com/crisvp/axios-vcr2/actions/workflows/run-tests.yml
