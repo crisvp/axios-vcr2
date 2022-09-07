@@ -9,3 +9,4 @@ jest.*
 test/
 .vscode/
 *.tgz
+.github/
