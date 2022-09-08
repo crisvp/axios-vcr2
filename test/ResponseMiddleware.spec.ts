@@ -11,7 +11,7 @@ import { axiosFixture, axiosResponse } from "./fixtures/axiosFixtures";
 import { fixtureFile } from "./util";
 import tmp from "tmp";
 import { readFileSync, unlinkSync } from "fs";
-import { AxiosFixture } from "../src/lib/AxiosFixture";
+import { AxiosFixture, AxiosFixtureResponse } from "../src/lib/AxiosFixture";
 import md5 from "md5";
 import { AxiosError } from "axios";
 
@@ -26,8 +26,30 @@ describe("ResponseMiddleware", () => {
       );
 
       expect(typeof interceptor).toBe("function");
-      const result = await interceptor(axiosFixture);
+      const result = await interceptor({
+        _fixture: true,
+        ...axiosFixture.originalResponseData,
+      } as AxiosFixtureResponse);
       expect(result).toEqual(axiosFixture.originalResponseData);
+
+      const fileContentEnd = md5(
+        readFileSync(fixtureFile("test-cassettes.json"))
+      );
+      expect(fileContentEnd).toEqual(fileContentStart);
+    });
+
+    test("it does not overwrite responses", async () => {
+      const interceptor = success(fixtureFile("test-cassettes.json"));
+      const fileContentStart = md5(
+        readFileSync(fixtureFile("test-cassettes.json"))
+      );
+
+      expect(typeof interceptor).toBe("function");
+      const result = await interceptor({
+        _fixture: false,
+        ...axiosFixture.originalResponseData,
+      } as AxiosFixtureResponse);
+      expect(result).not.toEqual(axiosFixture.originalResponseData);
 
       const fileContentEnd = md5(
         readFileSync(fixtureFile("test-cassettes.json"))

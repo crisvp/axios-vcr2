@@ -5,7 +5,7 @@ import { defaultMatcher, MatcherFunction } from "./Matchers";
 import * as jsonDB from "./jsonDb";
 
 import Debug from "./Debug";
-import { isAxiosFixture } from "./AxiosFixture";
+import { AxiosFixtureResponse, isAxiosFixture } from "./AxiosFixture";
 
 const debug = Debug(__filename);
 
@@ -41,8 +41,12 @@ export function success(
     const cassette = await loadCassette(cassettePath, axiosConfig, matcher);
     if (isAxiosFixture(cassette)) {
       debug("cassette found, setting up VCR adapter");
-      axiosConfig.adapter = async (_axiosConfig: AxiosRequestConfig) =>
-        cassette.originalResponseData;
+      axiosConfig.adapter = async (_axiosConfig: AxiosRequestConfig) => {
+        return {
+          _fixture: true,
+          ...cassette.originalResponseData,
+        } as AxiosFixtureResponse;
+      };
     } else {
       debug("cassette not found, setting up node http adapter");
       // By default axios uses XHR and so CORS fails. Switch to the node adapter.

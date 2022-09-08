@@ -1,7 +1,7 @@
 import { AxiosResponse, Method } from "axios";
 import { Cassette } from "./Cassettes";
 
-import { AxiosFixture, isAxiosFixture } from "./AxiosFixture";
+import { AxiosFixtureResponse, isAxiosFixtureResponse } from "./AxiosFixture";
 import { defaultMatcher, MatcherFunction } from "./Matchers";
 import * as jsonDB from "./jsonDb";
 import Debug from "./Debug";
@@ -47,13 +47,14 @@ async function storeFixture(
 export function success(
   cassettePath: string,
   matcher: MatcherFunction = defaultMatcher
-): (res: AxiosFixture | AxiosResponse) => Promise<AxiosResponse> {
+): (res: AxiosFixtureResponse | AxiosResponse) => Promise<AxiosResponse> {
   return async function (
-    res: AxiosFixture | AxiosResponse
+    res: AxiosFixtureResponse | AxiosResponse
   ): Promise<AxiosResponse> {
-    if (isAxiosFixture(res)) {
+    if (isAxiosFixtureResponse(res)) {
       debug("response success interceptor returning saved response");
-      return res.originalResponseData;
+      delete res._fixture;
+      return res;
     }
 
     const id = matcher(res.config);
