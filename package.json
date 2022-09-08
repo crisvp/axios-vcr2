@@ -1,6 +1,6 @@
 {
   "name": "axios-vcr2",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Record and play back Axios HTTP requests for tests",
   "author": "Cris van Pelt <cris@melkfl.es>",
   "license": "MIT",
